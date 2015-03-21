@@ -1,0 +1,23 @@
+{
+	"quotes" : [
+	{
+		"person": "Kid Rock",
+		"quote": "If it looks good, you'll see it. If it sounds good, you'll hear it. If it's marketed right, you'll buy it. But, if it's real, you'll feel it.",
+		"year": ""
+	},
+	{
+		"person": "Oscar Wilde",
+		"quote": "We are all in the gutter, but some of us are looking at the stars.",
+		"year": "1892"
+	},
+	{
+		"person": "Edmund Burke",
+		"quote": "Nobody made a greater mistake than he who did nothing because he could do only a little.",
+		"year": "1770"
+	},
+	{
+		"person": "Sun Tzu",
+		"quote": "To win one hundred victories in one hundred battles is not the highest skill. To subdue the enemy without fighting is the highest skill.",
+		"year": "6th Century BC"
+	}]
+}

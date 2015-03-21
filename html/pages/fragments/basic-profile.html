@@ -1,0 +1,12 @@
+<div ng-controller="BasicProfileController" ng-cloak>
+	<div ng-repeat="basicInfo in basicInfos" class="col-xs-12">
+		<div class="col-xs-12">
+			<p class="lead">{{ basicInfo.title }}</p>
+		</div>
+		<div class="col-xs-12 word-block">
+			<span>
+				{{ basicInfo.value | uppercase }}
+			</span>
+		</div>
+	</div>
+</div>

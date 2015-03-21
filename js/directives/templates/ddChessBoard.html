@@ -1,0 +1,5 @@
+<div ng-repeat="row in chessBoard track by $index" style="overflow: auto; display: table">
+	<span ng-repeat="square in row track by $index" style="float: left;">
+		<dd-chess-board-square is-light="($index + $parent.$index) % 2 === 0" piece="square"></dd-chess-board-square>
+	</span>
+</div>

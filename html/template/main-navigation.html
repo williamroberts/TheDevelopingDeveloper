@@ -1,0 +1,32 @@
+<nav ng-controller="NavigationController" class='"navbar navbar-inverse navbar-static-top"' role='"navigation"'>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" ng-click="navbarCollapsed = !navbarCollapsed">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">{{ navigationData.title }}</a>
+		</div>
+		<div class="collapse navbar-collapse" collapse="navbarCollapsed">
+			<ul class="nav navbar-nav">
+				<span ng-repeat-start="link in navigationData.links"></span>
+				<!-- Dropdowns -->
+				<li ng-if="link.sublinks.length > 0" dropdown>
+					<a class="dropdown-toggle">{{ link.title }} <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li ng-repeat="sublink in link.sublinks">
+							<dd-navigation-link destination="sublink.href" title="sublink.title" new-window="sublink.newWindow"></dd-navigation-link>
+						</li>
+					</ul>
+				</li>
+				<!-- Non-dropdowns -->
+				<li ng-if="link.sublinks.length === 0">
+					<dd-navigation-link destination="link.href" title="link.title" new-window="link.newWindow"></dd-navigation-link>
+				</li>
+				<span ng-repeat-end></span>
+			</ul>
+		</div>
+	</div>
+</nav>

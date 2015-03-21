@@ -1,0 +1,42 @@
+/*
+* CALENDAR-ICON.HTML
+*/
+
+.calendar-icon {
+  display: block;
+  position: relative;
+  width: 7em;
+  height: 7em;
+  margin: 2em auto;
+  border-radius: 0.6em;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.calendar-icon * {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+}
+
+.calendar-icon strong {
+  position: absolute;
+  top: 0;
+  padding: 0.4em 0;
+  background-color: #000000;
+  border-bottom: 1px dashed #AD2222;
+}
+
+.calendar-icon span {
+  width: 100%;
+  font-size: 2.8em;
+  letter-spacing: -0.05em;
+  padding-top: 0.8em;
+}
+
+.calendar-icon em {
+  position: absolute;
+  bottom: 0.3em;
+}

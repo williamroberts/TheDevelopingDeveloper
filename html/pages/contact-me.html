@@ -1,0 +1,31 @@
+<div class="container">
+ 	<div class="row-fluid">
+ 		<div class="col-xs-12">
+ 			<h2 class="page-header">Contact Me</h2>
+ 			<div class="col-xs-12 page-introduction">
+ 				<p>
+ 					This form will allow you to generate an email in your normal email client (Outlook, Gmail, Windows Live etc.). You will then be able to send the email. If you would like to know why this form cannot send emails properly, please drop me a message asking and I will answer as soon as I can.
+ 				</p>
+ 				<div class="col-xs-12">
+ 					<form role="form">
+ 						<div class="form-group">
+ 							<label>Name:</label>
+ 							<input ng-model="email.name" type="text" class="form-control" placeholder="Your name..."/>
+ 						</div>
+ 						<div class="form-group">
+ 							<label>Subject:</label>
+ 							<input ng-model="email.subject" type="text" class="form-control" placeholder="Your subject..."/>
+ 						</div>
+ 						<div class="form-group">
+ 							<label>Message:</label>
+ 							<textarea ng-model="email.message" class="form-control" rows="6" placeholder="Your message..."></textarea>
+ 						</div>
+ 						<div class="form-group">
+ 							  <a class="btn btn-default" ng-href="mailto:{{ email.destinationEmailAddress }}?subject={{ email.subject }}&body={{ email.message }}">Generate Email</a>
+ 						</div>
+ 					</form>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+</div>

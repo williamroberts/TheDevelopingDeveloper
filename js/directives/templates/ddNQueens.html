@@ -1,0 +1,23 @@
+<div>
+	<div>
+		<p>
+			Here you can set the board dimensions and solve the n-Queens problem. Please note that changing the dimension will reset the board.
+		</p>
+		<div>
+			<label for="dd-n-queens-dimension-input">
+				Dimension (n):
+			</label>
+			<input id="dd-n-queens-dimension-input" ng-model="dimension" ng-init="dimension = 8" type="number" min="4" max="15" /> (NB: The maximum allowed is 15)
+		</div>
+		<div>
+			<label for="dd-n-queens-dimension-input">
+				Step Delay (ms):
+			</label>
+			<input id="dd-n-queens-step-delay" ng-model="delay" type="number" name="points" min="0" max="3000" step="100"/> (NB: The maximum allowed is 5000ms)
+		</div>
+	</div>
+	<div style="padding-bottom: 5px">
+		<input type="button" value="Solve It!" ng-click="solveIt()"/>
+	</div>
+	<dd-chess-board dimension="dimension" board="board"></dd-chess-board>
+</div>

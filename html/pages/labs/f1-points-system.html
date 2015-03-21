@@ -1,0 +1,64 @@
+<div class="container" ng-cloak>
+	<div class="row-fluid">
+		<div class="col-xs-12">
+			<h2 class="page-header">F1 Points System</h2>
+			<p class="page-introduction">
+				The <a href="http://en.wikipedia.org/wiki/List_of_Formula_One_World_Championship_points_scoring_systems">Formula One points system</a> has changed a few times since I started watching it. Everytime the FIA change the points system there's always a big discussion about fairness and giving proper reward for winning but also trying to keep the contest alive between at least a couple of drivers. So, I thought it would be interesting to be able to set my own scoring system and see how it would affect not just the current season, but past seasons and all the statistics that go with it.
+			</p>
+			<p>
+				This is a pretty simple utility at the moment (and it's missing a few things I'll eventually add, like the different scoring systems from past seasons). I created this just to try out an API I found, which will eventually be listed on the Credits page of this website. I have plans to create more with this API in the near future.
+			</p>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="col-xs-12">
+			<h4 class="section-header page-header">Your F1 Points System</h4>
+			<div class="row-fluid">
+				<div class="col-xs-12 col-sm-6 col-md-2">
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-12 col-lg-10">
+					<label for="seasons">Select Season:</label> <select id="seasons" ng-model="selectedSeason" ng-options="season.season for season in seasons"></select>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="col-xs-12 col-sm-6 col-md-2">
+					<div class="table-responsive small">
+						<table class="table table-bordered table-condensed table-hover">
+							<tr>
+								<th>Position</th>
+								<th>Points</th>
+							</tr>
+							<tr ng-repeat="points in pointsSystem track by $index">
+								<td>{{ points.position | Ordinal }}</td>
+								<td><input ng-model="points.points" type="number" min="0" max="100" /></td>
+							</tr>
+						</table>
+					</div>
+					<dd-add-remove-row array="pointsSystem" ordinal="true" default-value="0"></dd-add-remove-row>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-12 col-lg-10">
+					<div class="table-responsive small">
+						<table dd-loading='{{ requestCounters.championshipTableForSeason }}' class="table table-bordered table-hover table-condensed">
+							<thead>
+								<tr>
+									<th>Nationality</th>
+									<th>Driver</th>
+									<th class="hidden-xs hidden-sm" ng-repeat="scheduledRace in seasonPoints.schedule">{{ scheduledRace.Circuit.Location.country | limitTo:3 | uppercase }}</th>
+									<th>Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="text-center" ng-repeat="driverResult in seasonPoints.driverResults">
+									<td>{{ driverResult.driver.nationality | limitTo:3 | uppercase }}</td>
+									<td class="text-left nowrap"><span class="hidden-xs hidden-sm hidden-md">{{ driverResult.driver.givenName }} </span>{{ driverResult.driver.familyName }}</td>
+									<td class="hidden-xs hidden-sm" ng-repeat="result in driverResult.results track by $index" ng-style="getStyle(result)">{{ result }}</td>
+									<td>{{ getTotalPoints(driverResult.results) }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
