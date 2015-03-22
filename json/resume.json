@@ -90,6 +90,23 @@
 						"text": [
 							"Working in an agile environment, using TDD along with paired-programming, on a complex web application enabling large-scale businesses to provide a range of flexible benefits, including pensions. For the duration of my employment at Capita, I was heavily involved in a project to design and implement an auto-enrolment solution to handle the government’s new pension legislation. The project was released at the beginning of 2013 and went on to win multiple industry awards."
 						]
+					},
+					{
+						"period": {
+							"startYear": "2014",
+							"yearSeparator": "-",
+							"endYear": "Present"
+						},
+						"institute": {
+							"name": "Netregistry",
+							"website": "https://www.netregistry.com.au"
+						},
+						"occupation": "Java Developer",
+						"text": [
+							"Since joining Netregistry, I have set about identifying areas for improvement in the codebase, and also in how developers write code - including giving a talk on marginal gains, small ways we can continually improve the code in order to add real value over time, without taking time out from our normal development.",
+							"I have migrated the project from Ant to Maven and also implemented a continuous integration system using Jenkins and Artifactory. This is the initial work on the road to creating a fully-testable project, something that is vitally important.",
+							"I have also played a role in the development of the team, helped to write job descriptions and adverts, and taken part in interviews."
+						]
 					}
 				]
 			},
@@ -118,7 +135,7 @@
 			{
 				"title": "Skills",
 				"items": [
-					"Java", "Hibernate", "Spring", "PLSQL", "AngularJS", "HTML", "CSS", "JavaScript", "jQuery", "SVN", "Git", "Intellij IDEA", "TDD", "Agile"
+					"Java", "Hibernate", "Spring", "PLSQL", "AngularJS", "HTML", "CSS", "JavaScript", "jQuery", "Git", "Intellij IDEA", "TDD", "Agile"
 				]
 			},
 			{
