@@ -128,8 +128,9 @@ theDevelopingDeveloperViewControllers.controller('F1PointsSystemController', ['$
 			championshipTableForSeason: 0
 		};
 
+		var currentYear = new Date().getFullYear();
 		$scope.seasons = [];
-		$scope.selectedSeason = { season: 2014 };
+		$scope.selectedSeason = { season: currentYear };
 		$scope.pointsSystem = [];
 		$scope.seasonPoints = {
 			season: '',
