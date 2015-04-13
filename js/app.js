@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('theDevelopingDeveloperFactories', []);
-angular.module('theDevelopingDeveloperViewControllers', []);
-angular.module('theDevelopingDeveloperGenericControllers', [])
+angular.module('theDevelopingDeveloperControllers', []);
 angular.module('theDevelopingDeveloperServices', []);
 angular.module('theDevelopingDeveloperDirectives', []);
 angular.module('theDevelopingDeveloperFilters', []);
@@ -14,8 +13,7 @@ var theDevelopingDeveloper = angular.module('theDevelopingDeveloper', [
 	'ngRoute',
 	'ngSanitize',
 	'theDevelopingDeveloperFactories',
-	'theDevelopingDeveloperViewControllers',
-	'theDevelopingDeveloperGenericControllers',
+	'theDevelopingDeveloperControllers',
 	'theDevelopingDeveloperServices',
 	'theDevelopingDeveloperDirectives',
 	'theDevelopingDeveloperFilters',
