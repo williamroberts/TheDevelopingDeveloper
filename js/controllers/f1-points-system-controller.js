@@ -10,87 +10,10 @@ theDevelopingDeveloperControllers.controller('F1PointsSystemController', ['$inte
 			championshipTableForSeason: 0
 		};
 
-		var currentYear = new Date().getFullYear();
 		$scope.seasons = [];
-		$scope.selectedSeason = { season: currentYear };
+		$scope.selectedSeason = { season : new Date().getFullYear() };
 		$scope.pointsSystem = [];
-		$scope.seasonPoints = {
-			season: '',
-			schedule: [],
-			driverResults: []
-		};
-
-		function resetData() {
-			$scope.seasonPoints = {
-				season: '',
-				schedule: [],
-				driverResults: []
-			};
-		}
-
-		function sortChampionshipStandings() {
-			$scope.seasonPoints.driverResults.sort(function(a, b) {
-				return $scope.getTotalPoints(b.results) - $scope.getTotalPoints(a.results);
-			});
-		}
-
-		function getSeasons() {
-			$scope.requestCounters.seasons++;
-			F1PointsSystemService.getSeasons()
-			.then(function(result) {
-				$scope.seasons = result.data.MRData.SeasonTable.Seasons;
-				$scope.selectedSeason = $scope.seasons[$scope.seasons.length - 1];
-			})
-			.finally(function() {
-				$scope.requestCounters.seasons--;
-			});
-		}
-
-		function getCurrentPointsSystem() {
-			$scope.requestCounters.currentPointsSystem++;
-			F1PointsSystemService.getCurrentPointsSystem()
-			.then(function(result) {
-				$scope.pointsSystem = result.data.points;
-			})
-			.finally(function() {
-				$scope.requestCounters.currentPointsSystem--;
-			});
-		}
-
-		function getChampionshipTableForSeason(season) {
-			/*
-				Have to get schedule and driver separately because if the season is the current one, 
-				the results only go up to the last race.
-			*/
-			$scope.seasonPoints.season = season;
-			F1PointsSystemService.getRaceScheduleForSeason(season)
-			.then(function(result) {
-				$scope.seasonPoints.schedule = result.data.MRData.RaceTable.Races;
-				$scope.requestCounters.championshipTableForSeason++;
-				return F1PointsSystemService.getDriversForSeason(season);
-			})
-			.then(function(result) {
-				var drivers = result.data.MRData.DriverTable.Drivers;
-				for(var i = 0; i < drivers.length; i++) {
-					var driver = drivers[i];
-					(function(driver) {
-						F1PointsSystemService.getRaceResultsForDriverAndSeason(driver, season)
-						.then(function(result) {
-							var returned = result.data.MRData.RaceTable.Races;
-							var results = new Array($scope.seasonPoints.schedule.length);
-							for(var i = 0; i < returned.length; i++) {
-								results[returned[i].round - 1] = parseInt(returned[i].Results[0].position);
-							}
-							$scope.seasonPoints.driverResults.push({ driver: driver, results: results });
-							sortChampionshipStandings();
-							$scope.requestCounters.championshipTableForSeason++;
-						});
-					})(driver);
-					$scope.requestCounters.championshipTableForSeason--;
-				}
-				$scope.requestCounters.championshipTableForSeason--;
-			});
-		}
+		$scope.seasonPoints = { season: '', schedule: [], driverResults: [] };
 
 		$scope.getTotalPoints = function(results) {
 			var pointsTotal = 0;
@@ -125,6 +48,66 @@ theDevelopingDeveloperControllers.controller('F1PointsSystemController', ['$inte
 			return style;
 		}
 
+		function sortChampionshipStandings() {
+			$scope.seasonPoints.driverResults.sort(function(a, b) {
+				return $scope.getTotalPoints(b.results) - $scope.getTotalPoints(a.results);
+			});
+		}
+
+		function getSeasons() {
+			$scope.requestCounters.seasons++;
+			F1PointsSystemService.getSeasons().then(function(result) {
+				$scope.seasons = result.data.MRData.SeasonTable.Seasons;
+				$scope.selectedSeason = $scope.seasons[$scope.seasons.length - 1];
+			})
+			.finally(function() {
+				$scope.requestCounters.seasons--;
+			});
+		}
+
+		function getCurrentPointsSystem() {
+			$scope.requestCounters.currentPointsSystem++;
+			F1PointsSystemService.getCurrentPointsSystem().then(function(result) {
+				$scope.pointsSystem = result.data.points;
+			})
+			.finally(function() {
+				$scope.requestCounters.currentPointsSystem--;
+			});
+		}
+
+		function getChampionshipTableForSeason(season) {
+			/*
+				Have to get schedule and driver separately because if the season is the current one, 
+				the results only go up to the last race.
+			*/
+			$scope.seasonPoints = { season: '', schedule: [], driverResults: [] };
+			$scope.seasonPoints.season = season;
+			F1PointsSystemService.getRaceScheduleForSeason(season).then(function(result) {
+				$scope.seasonPoints.schedule = result.data.MRData.RaceTable.Races;
+				$scope.requestCounters.championshipTableForSeason++;
+				return F1PointsSystemService.getDriversForSeason(season);
+			}).then(function(result) {
+				var drivers = result.data.MRData.DriverTable.Drivers;
+				for(var i = 0; i < drivers.length; i++) {
+					var driver = drivers[i];
+					(function(driver) {
+						F1PointsSystemService.getRaceResultsForDriverAndSeason(driver, season).then(function(result) {
+							var returned = result.data.MRData.RaceTable.Races;
+							var results = new Array($scope.seasonPoints.schedule.length);
+							for(var i = 0; i < returned.length; i++) {
+								results[returned[i].round - 1] = parseInt(returned[i].Results[0].position);
+							}
+							$scope.seasonPoints.driverResults.push({ driver: driver, results: results });
+							sortChampionshipStandings();
+							$scope.requestCounters.championshipTableForSeason++;
+						});
+					})(driver);
+					$scope.requestCounters.championshipTableForSeason--;
+				}
+				$scope.requestCounters.championshipTableForSeason--;
+			});
+		}
+
 		getSeasons();
 		getCurrentPointsSystem();
 		getChampionshipTableForSeason($scope.selectedSeason.season);
@@ -136,7 +119,6 @@ theDevelopingDeveloperControllers.controller('F1PointsSystemController', ['$inte
 		}, true);
 
 		$scope.$watch('selectedSeason', function(newSeason, oldSeason) {
-			resetData();
 			if (newSeason.season != oldSeason.season) {
 				getChampionshipTableForSeason(newSeason.season);
 			}

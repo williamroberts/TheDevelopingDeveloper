@@ -28,7 +28,7 @@ theDevelopingDeveloper.config(['$routeProvider', 'AngularyticsProvider',
 		var baseAboutMePageLocation = basePageLocation + '/about-me';
 		var baseLabsPageLocation = basePageLocation + '/labs';
 
-		var pageFileSuffix = ".html";
+		var pageFileSuffix = '.html';
 
 		var comingSoonPageLocation = basePageLocation + '/coming-soon.html';
 

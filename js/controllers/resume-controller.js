@@ -6,7 +6,7 @@ theDevelopingDeveloperControllers.controller('ResumeController', ['JSONService',
 	function (JSONService, $scope) {
 		$scope.resume = [];
 
-		JSONService.getJson('json/resume.json').then(function(result) {
+		JSONService.getJson('json/resume.json').then(function (result) {
 			$scope.resume = result.data.pageData;
 		});
 	}

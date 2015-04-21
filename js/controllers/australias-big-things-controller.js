@@ -11,9 +11,9 @@ theDevelopingDeveloperControllers.controller('AustraliasBigThingsController', ['
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			scrollwheel: false
 		};
+		
 		$scope.origin = '';
 		$scope.selectedBigThings = [];
-
 		$scope.states = [];
 
 		$scope.handleSelection = function(bigThing) {
@@ -37,13 +37,8 @@ theDevelopingDeveloperControllers.controller('AustraliasBigThingsController', ['
 			}
 		}
 
-		AustraliasBigThingsService
-		.getAll()
-		.then(function(result) {
+		AustraliasBigThingsService.getAll().then(function(result) {
 			$scope.states = result.data.states;
-		},
-		function(error) {
-		// handle error
 		});
 	}
 	]);
