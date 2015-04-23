@@ -22,13 +22,15 @@ module.exports = function(grunt) {
           // 'http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js',
           // 'http://cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.1/spin.min.js',
           'http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-mocks.js'
-        ]
+        ],
+        junit: {
+          path: 'test/junit-results'
+        }
       }
     }
   });
 
   // Register tasks.
-  // grunt.loadNpmTasks('grunt-jasmine-runner');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
 
   // Default task.
