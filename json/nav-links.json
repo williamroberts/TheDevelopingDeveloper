@@ -61,31 +61,6 @@
 						"href": "/labs/8-queens-problem",
 						"newWindow": false
 					},
-					{
-						"title": "Chess Move Calculator",
-						"href": "/labs/chess-move-calculator",
-						"newWindow": false
-					},
-					{
-						"title": "Sudoku Solver",
-						"href": "/labs/sudoku-solver",
-						"newWindow": false
-					},
-					{
-						"title": "Chess Game",
-						"href": "/labs/chess-game",
-						"newWindow": false
-					},
-					{
-						"title": "Cerebro",
-						"href": "/labs/cerebro",
-						"newWindow": false
-					},
-					{
-						"title": "JSON Formatter",
-						"href": "/labs/json-formatter",
-						"newWindow": false
-					}
 				]
 			},
 			{
