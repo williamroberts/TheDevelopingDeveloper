@@ -11,6 +11,7 @@ describe('BasicProfileController', function() {
 
 	beforeEach(function () {
 		module('theDevelopingDeveloperServices');
+		module('theDevelopingDeveloperControllers');
 	});
 
 	beforeEach(inject(function ($q, JSONService, $controller, $rootScope) {
