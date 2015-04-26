@@ -10,7 +10,6 @@ describe('BasicProfileController', function() {
 	var scope;
 
 	beforeEach(function () {
-		module('theDevelopingDeveloperControllers');
 		module('theDevelopingDeveloperServices');
 	});
 
