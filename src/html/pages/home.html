@@ -1,0 +1,45 @@
+<div ng-style="{ 'background-image': 'url(' + welcomeBackgroundImage.url + ')'}" class="welcome-block" ng-cloak>
+	<div class="container">
+		<div class="row-fluid text-center">
+			<div id="welcome-message" class="col-xs-12 highlight .page-introduction">
+				<h1>Hi!</h1>
+				<h2>I'm Will, and I'm the Developing Developer.</h2>
+				<h3>I make software, and I'm learning new stuff all the time.</h3>
+			</div>
+			<div id="quote" class="hidden-xs col-sm-12">
+				<p id="quote-body">
+					{{ quote.quote }}
+				</p>
+				<p>
+					{{ "- " + quote.person }} {{ quote.year ? " (" + quote.year + ")" : '' }}
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container" ng-cloak>
+	<div class="row-fluid">
+		<div class="col-xs-12 col-sm-6 text-center profile">
+			<h2>Professional Profile</h2>
+			<p>
+				<a href="#/about-me/professional-profile">
+					<img class="profile-img" src="/img/profile/professional-link.jpg" alt="Professional"/>
+				</a>
+			</p>
+			<p>
+				<a class="btn btn-default" href="#/about-me/professional-profile" role="button">View</a>
+			</p>
+		</div>
+		<div class="col-xs-12 col-sm-6 text-center profile">
+			<h2>Personal Profile</h2>
+			<p>
+				<a href="#/about-me/personal-profile">
+					<img class="profile-img" src="/img/profile/personal-link.jpg" alt="Professional"/>
+				</a>
+			</p>
+			<p>
+				<a class="btn btn-default" href="#/about-me/personal-profile" role="button">View</a>
+			</p>
+		</div>
+	</div>
+</div>

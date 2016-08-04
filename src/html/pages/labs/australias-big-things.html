@@ -1,0 +1,31 @@
+<div class="container" ng-cloak>
+	<div class="row-fluid">
+		<h2 class="page-header">Australia's Big Things</h2>
+		<p class="page-introduction">
+			If I have missed any big things, please email me via the contact me page and let me know the name and address of the Big Thing.
+		</p>
+		<dd-gm-map map-options="mapOptions" origin="origin" markers="selectedBigThings" round-trip="true"></dd-gm-map>
+		<form role="form">
+			<!-- <div class="form-group">
+				<label for="startingLocation">Starting Location:</label>
+				<dd-gm-search location="origin"></dd-gm-search>
+			</div> -->
+			<uib-accordion close-others="false">
+				<div uib-accordion-group ng-repeat="state in states" class="form-group">
+					<uib-accordion-heading>
+						{{ state.name }} <span class="caret"></span>
+					</uib-accordion-heading>
+					<div class="container" ng-cloak>
+						<div ng-repeat="bigThing in state.bigThings" class="row-fluid">
+							<div class="col-xs-12 col-sm-4 checkbox-inline">
+							    <label>
+							    	<input type="checkbox" ng-click="handleSelection(bigThing)"/> {{ bigThing.name }}
+							    </label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</uib-accordion>
+		</form>
+	</div>
+</div>

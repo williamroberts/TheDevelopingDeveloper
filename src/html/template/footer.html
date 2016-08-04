@@ -1,0 +1,21 @@
+<footer ng-controller="FooterController" ng-cloak>
+	<div class="container">
+		<div id="main-footer" class="row-fluid">
+			<div class="col-xs-12 col-sm-3">
+				<h3>{{ footerData.title }}</h3>
+				<p ng-bind-html="footerData.introduction | Trust"></p>
+			</div>
+			<div class="col-xs-12 col-sm-9 footer-content">
+				<h3>Content</h3>
+				<div ng-repeat="link in footerData.links" class="col-xs-6 col-sm-{{ footerData.links.length / 5 | number:0 }} footer-link">
+					<dd-navigation-link destination="link.href" title="link.title" new-window="link.newWindow"></dd-navigation-link>
+				</div>
+			</div>
+		</div>
+		<div id="sub-footer" class="row-fluid">
+			<div class="col-xs-12 text-center">
+				All development and any other fun stuff is by me, <a href="/#/profiles/personal-profile">Will Roberts</a>.
+			</div>
+		</div>
+	</div>
+</footer>

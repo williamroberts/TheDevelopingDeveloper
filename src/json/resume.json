@@ -1,0 +1,153 @@
+{
+	"pageData": {
+		"title": "Resume",
+		"image": {
+			"src": "/img/profile/professional-link.jpg",
+			"alt": "Me"
+		},
+		"personalStatement": {
+			"title": "Personal Statement",
+			"content": [
+				"Although my training lies primarily in Java development, I consider myself a fullstack developer and am just as comfortable creating a new screen with HTML, CSS, and JavaScript as I am querying a database. With a background in Spring and Hibernate I am able to create richly functioning websites.",
+				"I enjoy the collaboration of working in a team but also value the focus that can be found by working alone. Having worked in environments utilising the Agile methodology I relish the discussions and processes that go into the scoping of development tasks and projects. I thrive on tasks that challenge me and prefer to work on things that are complex - there is no feeling better than getting a well-written piece of code to function correctly."
+			]
+		},
+		"availability": {
+			"title": "Availability",
+			"content": [
+				"I am currently available for freelance projects, either as the sole developer or in a collaborative or consultant capacity. If you'd like to discuss your next project or an opportunity I may be suitable for, please get in touch with me <a href=\"#/contact-me\">here</a>."
+			]
+		},
+		"chronology": [
+			{
+				"sectionTitle": "Education",
+				"content": [
+					{
+						"period": {
+							"startYear": "2004",
+							"yearSeparator": "-",
+							"endYear": "2008"
+						},
+						"institute": {
+							"name": "University of the West of England, Bristol",
+							"website": "http://www.uwe.ac.uk"
+						},
+						"occupation": "BSc (Hons) Software Engineering (2:1)",
+						"text": [
+							"<strong>Final Year Project: Biometric Facial Scanning &amp; Recognition System</strong> – This system was written in the Java programming language, encompassing a MySQL database. The aim of the project was to create a system that could receive a photographic image of a person and match them correctly to a previously stored image of the same person. The program was accompanied by a 16000 word report detailing the project in detail."
+						]
+					}
+				]
+			},
+			{
+				"sectionTitle": "Employment History",
+				"content": [
+					{
+						"period": {
+							"startYear": "2006",
+							"yearSeparator": "-",
+							"endYear": "2007"
+						},
+						"institute": {
+							"name": "Futurelink Software",
+							"website": "http://www.futurelinksw.co.uk"
+						},
+						"occupation": "Technical Support Officer",
+						"text": [
+							"A placement year during my degree, I assisted clients both on the phone and on-site with any issues arising during the use of our software product, a recruitment solution. Duties also included programming, training, and backup management. My biggest achievement was the sale of a bespoke application designed and written in the Delphi programming language."
+						]
+					},
+					{
+						"period": {
+							"startYear": "2010",
+							"yearSeparator": "-",
+							"endYear": "2012"
+						},
+						"institute": {
+							"name": "Rightmove",
+							"website": "www.rightmove.co.uk"
+						},
+						"occupation": "Application Support Developer",
+						"text": [
+							"Working for a top-10 UK website in a team of 8 others in a 3rd line support role, also including working on bug fixes and enhancements, on all internally and externally facing projects. As the most experienced member of the team I mentored other team members and developers, who spent a two-month probationary period with the team before joining their project development team. Primary focus on technical support and service delivery, working with an extensive pair of Oracle databases, multiple Java projects, and various shell and Perl scripts.",
+							"Secondary focus was on software development, adding bug fixes and enhancements to the variety of internal and external projects. As my time at the company increased, so did the opportunities to focus on software development, and from the beginning of 2011 I spent about 80% of my time on this. The largest piece of development I worked on was a batch job to improve our data quality.",
+							"I also spent time in the iPhone development team."
+						]
+					},
+					{
+						"period": {
+							"startYear": "2012",
+							"yearSeparator": "-",
+							"endYear": "2013"
+						},
+						"institute": {
+							"name": "Capita Employee Benefits",
+							"website": "https://www.capitaemployeebenefits.co.uk"
+						},
+						"occupation": "Java Developer",
+						"text": [
+							"Working in an agile environment, using TDD along with paired-programming, on a complex web application enabling large-scale businesses to provide a range of flexible benefits, including pensions. For the duration of my employment at Capita, I was heavily involved in a project to design and implement an auto-enrolment solution to handle the government’s new pension legislation. The project was released at the beginning of 2013 and went on to win multiple industry awards."
+						]
+					},
+					{
+						"period": {
+							"startYear": "2014",
+							"yearSeparator": "-",
+							"endYear": "Present"
+						},
+						"institute": {
+							"name": "Netregistry",
+							"website": "https://www.netregistry.com.au"
+						},
+						"occupation": "Java Developer",
+						"text": [
+							"Since joining Netregistry, I have set about identifying areas for improvement in the codebase, and also in how developers write code - including giving a talk on marginal gains, small ways we can continually improve the code in order to add real value over time, without taking time out from our normal development.",
+							"I have migrated the project from Ant to Maven and also implemented a continuous integration system using Jenkins and Artifactory. This is the initial work on the road to creating a fully-testable project, something that is vitally important.",
+							"I have also played a role in the development of the team, helped to write job descriptions and adverts, and taken part in interviews."
+						]
+					}
+				]
+			},
+			{
+				"sectionTitle": "Other Employment",
+				"content": [
+					{
+						"period": {
+							"startYear": "2008",
+							"yearSeparator": "&",
+							"endYear": "2009"
+						},
+						"institute": {
+							"name": "Summit Camp",
+							"website": "http://www.summitcamp.com"
+						},
+						"occupation": "Computer Specialist",
+						"text": [
+							"Taught computing to campers aged between 7 and 20. This included the planning of the summer curriculum and working as part of the computing team in order to give the campers a summer they’d never forget. Also provided 24/7 supervision of campers in a variety of settings, both by myself and as a member of a team."
+						]
+					}
+				]
+			}
+		],
+		"extras": [
+			{
+				"title": "Skills",
+				"items": [
+					"Java", "Hibernate", "Spring", "PLSQL", "AngularJS", "HTML", "CSS", "JavaScript", "jQuery", "Git", "Intellij IDEA", "TDD", "Agile"
+				]
+			},
+			{
+				"title": "Hobbies",
+				"items": [
+					"Formula 1", "AFL", "Football", "Travelling", "Video Games", "Shotokan Karate", "Snowboarding"
+				]
+			},
+			{
+				"title": "Memberships",
+				"items": [
+					"Mensa (2007-2012)", "Shotokan of England Karate Union (1992-2010)"
+				]
+			}
+		]
+	}
+}

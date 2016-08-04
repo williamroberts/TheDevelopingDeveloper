@@ -1,0 +1,69 @@
+{
+	"pageData": {
+		"title": "Professional Profile",
+		"image": "/img/profile/professional.jpg",
+		"introductionParagraphs":
+		[
+			{
+				"text": "My name is Will Roberts, and I'm a pretty normal guy. But you can read more about that on my <a href=\"#/personal-profile\">personal profile page</a>."
+			},
+			{
+				"text": "I'm a web developer with a degree in Software Engineering. My main skills lie in building websites with JEE and the Spring and Hibernate frameworks. I like to think I'm a pretty solid full stack developer and enjoy working with databases and on the front-end with HTML5, CSS3, and JavaScript."
+			},
+			{
+				"text": "I am a big supporter of the Agile methodology and believe that continuous integration is the way forward - if you can release code at any time, you can fix code at any time and you can update code at any time."
+			},
+			{
+				"text": "This site is built using AngularJS and Twitter Bootstrap, with no server-side code, to keep things simple (and cheap). **** UPDATE THIS AFTER UPLOADING TO AWS ****"
+			},
+			{
+				"text": "You can find out some basic stuff about me lower down the page, or view my online resume <a href=\"#/about-me/resume\">here</a>."
+			}
+		],
+		"extrasTitle": "Skills",
+		"extras": [
+			{
+				"title": "Languages",
+				"items": [
+					{ "name": "Java" },
+					{ "name": "JSP" },
+					{ "name": "JavaScript" },
+					{ "name": "HTML" },
+					{ "name": "CSS" },
+					{ "name": "SQL" }
+				]
+			},
+			{
+				"title": "Technologies",
+				"items": [
+					{ "name": "Java" },
+					{ "name": "Docker" },
+					{ "name": "AWS" },
+					{ "name": "AngularJS" },
+					{ "name": "Spring" },
+					{ "name": "Hibernate" }
+				]
+			},
+			{
+				"title": "Software",
+				"items": [
+					{ "name": "IDEA" },
+					{ "name": "JIRA" },
+					{ "name": "Bamboo" },
+					{ "name": "Git" },
+					{ "name": "Jenkins" },
+					{ "name": "TOAD" }
+				]
+			},
+			{
+				"title": "Methodologies",
+				"items": [
+					{ "name": "Agile" },
+					{ "name": "TDD" },
+					{ "name": "CI" }
+				]
+			}
+		],
+		"generalTitle": "General Information"
+	}
+}

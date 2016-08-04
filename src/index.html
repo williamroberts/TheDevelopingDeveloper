@@ -1,0 +1,84 @@
+<!doctype html>
+<html ng-app="theDevelopingDeveloper">
+	<head>
+		<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDovL8W7hv-f_r-VTacvriWhMJkUH941yY"></script>
+
+		<!-- EXTERNAL -->
+		<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.0.0/ui-bootstrap-tpls.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-sanitize.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.1/spin.min.js"></script> -->
+
+		<!-- FONTS -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
+		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css' />
+		<!-- STYLES -->
+		<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/main.css" />
+
+		<!-- SEO -->
+		<meta name="description" content="The website of Will Roberts, a Java and AngularJS software and web developer living in Sydney, Australia" />
+		<meta name="keywords" content="Will Roberts, developing, developer, development, software, AngularJS, Java, F1, F1 Stats, F1 Statistics, Chess Problem, Chess Problems">
+		<link rel="author" href="https://plus.google.com/104585028103676307355" />
+
+		<!-- OPEN GRAPH SEO -->
+		<meta property="og:url" content="/" />
+		<meta property="og:title" content="The Developing Developer" />
+		<meta property="og:type" content="website" />
+		<!-- <meta property="og:image" content=""/> -->
+		<meta property="og:locale" content="en_GB" />
+		<meta property="og:site_name" content="The Developing Developer" />
+		<meta property="og:description" content="The website of Will Roberts, a Java and AngularJS software and web developer living in Sydney, Australia" />
+
+		<title ng-bind-template="{{ 'The Developing Developer' }}{{ title ? ' - ' + title : ''}}"></title>
+	</head>
+	<body>
+		<div ng-include src='"html/template/main-navigation.html"'></div>
+		<article ng-view></article>
+		<div ng-include src='"html/template/footer.html"'></div>
+
+
+		<!-- COMPONENTS -->
+		<script src="js/components/angular/angular.js"></script>
+		<script src="js/components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		<script src="js/components/angular-sanitize/angular-sanitize.js"></script>
+		<script src="js/components/angular-route/angular-route.js"></script>
+		<script src="js/components/spin.js/spin.min.js"></script>
+		<script src="js/components/es5-shim/es5-shim.js"></script>
+		<script src="js/components/es6-shim/es6-shim.js"></script>
+
+		<!-- build:js js/app.min.js -->
+		<!-- APP -->
+		<script src="js/app.js"></script>
+		<!-- UTILS -->
+		<script src="js/utils/utils.js"></script>
+		<!-- FILTERS -->
+		<script src="js/filters/filters.js"></script>
+		<!-- FACTORIES -->
+		<script src="js/factories/factories.js"></script>
+		<!-- DIRECTIVES -->
+		<script src="js/directives/directives.js"></script>
+		<!-- SERVICES -->
+		<script src="js/services/australias-big-things-service.js"></script>
+		<script src="js/services/json-service.js"></script>
+		<script src="js/services/f1-points-system-service.js"></script>
+
+		<!-- CONTROLLERS -->
+		<script src="js/controllers/home-controller.js"></script>
+		<script src="js/controllers/f1-points-system-controller.js"></script>
+		<script src="js/controllers/personal-profile-controller.js"></script>
+		<script src="js/controllers/contact-me-controller.js"></script>
+		<script src="js/controllers/navigation-controller.js"></script>
+		<script src="js/controllers/footer-controller.js"></script>
+		<script src="js/controllers/resume-controller.js"></script>
+		<script src="js/controllers/professional-profile-controller.js"></script>
+		<script src="js/controllers/basic-profile-controller.js"></script>
+		<script src="js/controllers/australias-big-things-controller.js"></script>
+
+		<script src="js/angularytics.js"></script>
+		<script src="js/utils/ga.js"></script>
+		<!-- endbuild -->
+	</body>
+</html>

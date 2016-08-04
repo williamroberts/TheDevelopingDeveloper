@@ -1,0 +1,120 @@
+{
+	"pageData": {
+		"title": "Personal Profile",
+		"image": "/img/profile/personal.jpg",
+		"introductionParagraphs":
+		[
+			{
+				"text": "My name is Will Roberts, and I'm a software developer. But you can read more about that on my <a href=\"#/professional-profile\">professional profile page</a>."
+			},
+			{
+				"text": "You've come to this page to find out more about me as a person, so thank you for that. I'm a pretty normal guy, who loves computers, technology, and all that comes with that. Other than computers, I love martial arts and am a second degree black belt in Shotokan karate. I haven't trained for a few years, but I'm sure I'll get back into it at some point. I also want to start doing Brazilian Jiu-Jitsu."
+			},
+			{
+				"text": "I used to play for an AFL team in London, the <a href=\"http://www.londongiants.com/\">South East London Giants</a> - check them out if you're ever in the capital. I'm also pretty obsessed with Formula 1, though watching all the races can be a bit challenging now that I live in Sydney, Australia! I live here with my awesome fiance Marika, a true-blue Aussie who has somehow managed to get me into Rugby League (Go the Sharks!)."
+			},
+			{
+				"text": "You can find out some basic stuff about me on this page."
+			}
+		],
+		"extrasTitle": "Favourite Things",
+		"extras": [
+			{
+				"title": "Sports",
+				"items": [
+					{ "name": "Rugby League" },
+					{ "name": "Football" },
+					{ "name": "Rugby Union" },
+					{ "name": "AFL" },
+					{ "name": "V8 Supercars" },
+					{ "name": "Formula 1" },
+					{ "name": "Tennis" },
+					{ "name": "Snooker" },
+					{ "name": "Pool" },
+					{ "name": "Chess" },
+					{ "name": "Checkers" },
+					{ "name": "Karate" },
+					{ "name": "UFC" }
+				]
+			},
+			{
+				"title": "Sports Teams",
+				"items": [
+					{ "name": "GWS Giants" },
+					{ "name": "Scuderia Ferrari" },
+					{ "name": "Chelsea FC" },
+					{ "name": "Cronulla Sharks" },
+					{ "name": "Wales Rugby Union Team" },
+					{ "name": "Australia Rugby League Team" },
+					{ "name": "Barcelona FC" },
+					{ "name": "Red Bull Racing Australia" }
+				]
+			},
+			{
+				"title": "Sports People",
+				"items": [
+					{ "name": "Michael Schumacher" },
+					{ "name": "Lyoto Machida" },
+					{ "name": "Mark Webber" },
+					{ "name": "Nico Rosberg" },
+					{ "name": "Fernando Alonso" },
+					{ "name": "Daniel Ricciardo" },
+					{ "name": "Jose Mourinho" },
+					{ "name": "Paul Gallen" },
+					{ "name": "Stephen Hendry" }
+				]
+			},
+			{
+				"title": "Books",
+				"items": [
+					{ "name": "I, Lucifer" },
+					{ "name": "Death of an Ordinary Man" },
+					{ "name": "American Psycho" }
+				]
+			},
+			{
+				"title": "Movies",
+				"items": [
+					{ "name": "Die Hard" },
+					{ "name": "Liar Liar" },
+					{ "name": "American Psycho" }
+				]
+			},
+			{
+				"title": "TV Shows",
+				"items": [
+					{ "name": "Family Guy" },
+					{ "name": "The Simpsons" },
+					{ "name": "South Park" },
+					{ "name": "The Sopranos" },
+					{ "name": "Prison Break" },
+					{ "name": "Dexter" },
+					{ "name": "House" },
+					{ "name": "Penn & Teller: BS" }
+				]
+			},
+			{
+				"title": "Video Games",
+				"items": [
+					{ "name": "Pro Evolution Soccer" },
+					{ "name": "Gran Turismo" },
+					{ "name": "Hitman" }
+				]
+			},
+			{
+				"title": "Music",
+				"items": [
+					{ "name": "Eminem" },
+					{ "name": "Kid Rock" },
+					{ "name": "Meat Loaf" },
+					{ "name": "Macklemore" },
+					{ "name": "Lorde" },
+					{ "name": "Sage Francis" },
+					{ "name": "Scroobius Pip" },
+					{ "name": "Slipknot" }
+				]
+			}
+		],
+		"generalTitle": "The Boring Stuff"
+	}
+}
