@@ -5,5 +5,5 @@ node('master') {
   checkout scm
 
   stage 'Docker Build'
-  def img = docker.build "theDevelopingDeveloper:${safeBranchName}"
+  def img = docker.build "thedevelopingdeveloper:${safeBranchName}"
 }
