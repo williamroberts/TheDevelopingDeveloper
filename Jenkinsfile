@@ -6,4 +6,13 @@ node('master') {
 
   stage 'Docker Build'
   def img = docker.build "thedevelopingdeveloper:${safeBranchName}"
+
+  stage 'Snarfle dist folder'
+  def tempContainerName = "snarfle"
+  img.withRun('--name="snarfle"') { container ->
+     sh "docker cp ${tempContainerName}:/home/app/dist /tmp"
+  }
+
+  stage 'Deploy to S3 bucket'
+  
 }
