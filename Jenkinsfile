@@ -1,7 +1,6 @@
 node('master') {
   def awsRegion = env.AWS_REGION
-  def workspace = pwd()
-  def projectName = "thedevelopingdeveloperxxx"
+  def projectName = "thedevelopingdeveloper"
   def distFolder = "/dist"
   def tmpFolder = "/tmp"
   def distFolderPath = "/home/app" + distFolder
