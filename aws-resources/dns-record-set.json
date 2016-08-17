@@ -1,17 +1,16 @@
 {
-  "Comment": "UPSERT record set",
+  "Comment": "UPSERT record set for thedevelopingdeveloper.com",
   "Changes": [
     {
       "Action": "UPSERT",
       "ResourceRecordSet": {
         "Name": "thedevelopingdeveloper.com.",
-        "Type": "CNAME",
-        "TTL": 60,
-        "ResourceRecords": [
-          {
-            "Value": "thedevelopingdeveloper.com.s3-website-eu-west-1.amazonaws.com"
-          }
-        ]
+        "Type": "A",
+        "AliasTarget" : {
+          "HostedZoneId" : "Z1BKCTXD74EZPE",
+          "DNSName" : "thedevelopingdeveloper.com.",
+          "EvaluateTargetHealth" : false
+        }
       }
     }
   ]

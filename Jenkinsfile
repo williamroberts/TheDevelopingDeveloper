@@ -41,7 +41,7 @@ node('master') {
 
 
     stage 'Upload build to S3'
-    sh "aws s3 cp --recursive \"${tmpFolder}${distFolder}\" s3://\"${projectName}\"/"
+    sh "aws s3 sync --recursive \"${tmpFolder}${distFolder}\" s3://\"${projectName}\"/"
 
 
     stage 'Set S3 bucket as website'
