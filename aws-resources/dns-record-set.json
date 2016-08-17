@@ -8,7 +8,7 @@
         "Type": "A",
         "AliasTarget" : {
           "HostedZoneId" : "Z1BKCTXD74EZPE",
-          "DNSName" : "thedevelopingdeveloper.com.s3-website-eu-west-1.amazonaws.com.",
+          "DNSName" : "thedevelopingdeveloper.com.s3-website-eu-west-1.amazonaws.com",
           "EvaluateTargetHealth" : false
         }
       }
