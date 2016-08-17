@@ -4,7 +4,7 @@
     {
       "Action": "UPSERT",
       "ResourceRecordSet": {
-        "Name": "thedevelopingdeveloper.com.s3-website-eu-west-1.amazonaws.com.",
+        "Name": "thedevelopingdeveloper.com.s3-website-eu-west-1.amazonaws.com",
         "Type": "A",
         "AliasTarget" : {
           "HostedZoneId" : "Z1BKCTXD74EZPE",
