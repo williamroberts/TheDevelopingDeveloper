@@ -54,7 +54,7 @@ node('master') {
 
     stage "Create hosted zone for ${projectName} if it doesn't already exist"
     sh """#!/bin/bash
-    __hosted_zone_exists=$(aws route53 list-hosted-zones-by-name --dns-name ${projectName} --query HostedZones[].Name --output text)
+    __hosted_zone_exists=\$(aws route53 list-hosted-zones-by-name --dns-name ${projectName} --query HostedZones[].Name --output text)
     if [[ \$__hosted_zone_exists ]];
     then
       echo \"${projectName} hosted zone exists. Proceeding...\";
