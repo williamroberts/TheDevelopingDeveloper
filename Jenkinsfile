@@ -53,7 +53,7 @@ node('master') {
 
 
     stage 'Assign Route53 domain to S3 bucket for easy browsing'
-    sh "aws change-resource-record-sets --hosted-zone-id $(aws route53 list-hosted-zones-by-name --dns-name will-roberts.uk --query 'HostedZones[].Id' --output text) --change-batch file://aws-resources/dns-record-set.json"
+    sh "aws change-resource-record-sets --hosted-zone-id \$(aws route53 list-hosted-zones-by-name --dns-name will-roberts.uk --query 'HostedZones[].Id' --output text) --change-batch file://aws-resources/dns-record-set.json"
   } else {
     // Need to do something here for branches maybe. Deploy to a staging environment?
   }
