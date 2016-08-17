@@ -35,7 +35,7 @@ node('master') {
     else
       echo \"${projectName} S3 bucket not found. Creating...\";
       aws s3 mb s3://\"${projectName}\";
-      echo \"${projectName} S3 bucket created.\";
+      echo \"${projectName} S3 bucket created successfully. Proceeding...\";
     fi;
     """
 
@@ -50,6 +50,19 @@ node('master') {
 
     stage 'Make S3 bucket browsable by all'
     sh "aws s3api put-bucket-policy --bucket ${projectName} --policy file://aws-resources/website-bucket-policy.json"
+
+
+    stage "Create hosted zone for ${projectName} if it doesn't already exist"
+    sh """#!/bin/bash
+    __hosted_zone_exists=$(aws route53 list-hosted-zones-by-name --dns-name ${projectName} --query HostedZones[].Name --output text)
+    if [[ \$__hosted_zone_exists ]];
+    then
+      echo \"${projectName} hosted zone exists. Proceeding...\";
+    else
+      echo \"${projectName} hosted zone not found. Creating...\";
+      aws route53 create-hosted-zone --name ${projectName} --caller-reference \$(date +%Y%m%d_%H%M%S_%N);
+      echo \"${projectName} hosted zone created successfully. Proceeding...\"
+    """
 
 
     stage 'Assign Route53 domain to S3 bucket for easy browsing'
