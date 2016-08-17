@@ -61,7 +61,8 @@ node('master') {
     else
       echo \"${projectName} hosted zone not found. Creating...\";
       aws route53 create-hosted-zone --name ${projectName} --caller-reference \$(date +%Y%m%d_%H%M%S_%N);
-      echo \"${projectName} hosted zone created successfully. Proceeding...\"
+      echo \"${projectName} hosted zone created successfully. Proceeding...\";
+    fi;
     """
 
 
