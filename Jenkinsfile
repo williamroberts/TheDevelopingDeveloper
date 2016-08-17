@@ -1,6 +1,6 @@
 node('master') {
   def awsRegion = env.AWS_REGION
-  def projectName = 'thedevelopingdeveloper' // No way to get this from env without parsing Strings... seems a bit silly.
+  def projectName = 'thedevelopingdeveloper.com' // No way to get this from env without parsing Strings... seems a bit silly.
   def distFolder = "/dist"
   def tmpFolder = "/tmp"
   def distFolderPath = "/home/app" + distFolder
@@ -53,7 +53,7 @@ node('master') {
 
 
     stage 'Assign Route53 domain to S3 bucket for easy browsing'
-    sh "aws route53 change-resource-record-sets --hosted-zone-id \$(aws route53 list-hosted-zones-by-name --dns-name will-roberts.uk --query 'HostedZones[].Id' --output text) --change-batch file://aws-resources/dns-record-set.json"
+    sh "aws route53 change-resource-record-sets --hosted-zone-id \$(aws route53 list-hosted-zones-by-name --dns-name ${projectName} --query 'HostedZones[].Id' --output text) --change-batch file://aws-resources/dns-record-set.json"
   } else {
     // Need to do something here for branches maybe. Deploy to a staging environment?
   }
