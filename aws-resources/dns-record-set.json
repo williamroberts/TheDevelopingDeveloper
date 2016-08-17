@@ -1,0 +1,18 @@
+{
+  "Comment": "UPSERT record set",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "will-roberts.uk",
+        "Type": "CNAME",
+        "TTL": 60,
+        "ResourceRecords": [
+          {
+          "Value": "thedevelopingdeveloper.s3-website-eu-west-1.amazonaws.com"
+          }
+        ]
+      }
+    }
+  ]
+}
