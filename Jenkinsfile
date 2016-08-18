@@ -1,6 +1,7 @@
 node('master') {
   def awsRegion = env.AWS_REGION
   def projectName = 'thedevelopingdeveloper.com' // No way to get this from env without parsing Strings... seems a bit silly.
+  def wwwProjectName = "www.${projectName}"
   def distFolder = "/dist"
   def tmpFolder = "/tmp"
   def distFolderPath = "/home/app" + distFolder
@@ -23,20 +24,23 @@ node('master') {
   }
 
 
-  // Only deploy if this is the master branch. We don't want to deploy anything else
+  // Only deploy if this is the master branch. We don't want to deploy anything else (right now)
   if (isMaster) {
-    stage 'Create S3 bucket if it doesn\'t already exist'
+    stage 'Create S3 buckets if they don\'t already exist'
     sh """#!/bin/bash
-    aws s3 ls | grep ${projectName};
-    __result=\$?;
-    if [[ \$__result == 0 ]];
-    then
-      echo \"${projectName} S3 bucket found. Proceeding...\";
-    else
-      echo \"${projectName} S3 bucket not found. Creating...\";
-      aws s3 mb s3://\"${projectName}\";
-      echo \"${projectName} S3 bucket created successfully. Proceeding...\";
-    fi;
+    for s3_bucket in ${projectName} ${wwwProjectName};
+    do
+      aws s3api list-buckets --query \"Buckets[?Name==\\`\\"\$s3_bucket\\"\\`].Name\" --output text;
+      __result=\$?;
+      if [[ \$__result == 0 ]];
+      then
+        echo \"\$s3_bucket S3 bucket found. Proceeding...\";
+      else
+        echo \"\$s3_bucket S3 bucket not found. Creating...\";
+        aws s3 mb s3://\"\$s3_bucket\";
+        echo \"\$s3_bucket S3 bucket created successfully. Proceeding...\";
+      fi;
+    done;
     """
 
 
@@ -44,19 +48,19 @@ node('master') {
     sh "aws s3 sync \"${tmpFolder}${distFolder}\" s3://\"${projectName}\"/"
 
 
-    stage 'Set S3 bucket as website'
-    sh "aws s3 website s3://${projectName}/ --index-document index.html"
+    stage 'Configure S3 buckets - naked domain as website, www as redirect'
+    sh "aws s3api put-bucket-website --bucket ${projectName} --website-configuration file://aws-resources/${projectName}.website-config.json"
+    sh "aws s3api put-bucket-website --bucket ${wwwProjectName} --website-configuration file://aws-resources/${wwwProjectName}.website-config.json"
 
 
     stage 'Make S3 bucket browsable by all'
-    sh "aws s3api put-bucket-policy --bucket ${projectName} --policy file://aws-resources/website-bucket-policy.json"
+    sh "aws s3api put-bucket-policy --bucket ${projectName} --policy file://aws-resources/${projectName}.policy.json"
 
 
     stage "Create hosted zone for ${projectName} if it doesn't already exist"
     sh """#!/bin/bash
-    __hosted_zone=\$(aws route53 list-hosted-zones-by-name --dns-name ${projectName} --query HostedZones[0].Name --output text);
-    echo "********************** __hosted_zone = \$__hosted_zone";
-    if [[ \$__hosted_zone == ${projectName}. ]];
+    __existing_hosted_zone=\$(aws route53 list-hosted-zones-by-name --dns-name ${projectName} --query HostedZones[0].Name --output text);
+    if [[ \$__existing_hosted_zone == ${projectName}. ]];
     then
       echo \"${projectName} hosted zone exists. Proceeding...\";
     else

@@ -1,0 +1,6 @@
+{
+  "RedirectAllRequestsTo": {
+    "HostName": "thedevelopingdeveloper.com",
+    "Protocol": "http"
+  }
+}

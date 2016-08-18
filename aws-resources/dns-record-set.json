@@ -12,6 +12,18 @@
           "EvaluateTargetHealth" : false
         }
       }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "www.thedevelopingdeveloper.com.",
+        "Type": "A",
+        "AliasTarget" : {
+          "HostedZoneId" : "Z1BKCTXD74EZPE",
+          "DNSName" : "s3-website-eu-west-1.amazonaws.com",
+          "EvaluateTargetHealth" : false
+        }
+      }
     }
   ]
 }
