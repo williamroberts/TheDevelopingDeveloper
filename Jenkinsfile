@@ -56,7 +56,7 @@ node('master') {
     sh """#!/bin/bash
     __hosted_zone=\$(aws route53 list-hosted-zones-by-name --dns-name ${projectName} --query HostedZones[0].Name --output text);
     echo "********************** __hosted_zone = \$__hosted_zone";
-    if [[ \$__hosted_zone == ${projectName} ]];
+    if [[ \$__hosted_zone == ${projectName}. ]];
     then
       echo \"${projectName} hosted zone exists. Proceeding...\";
     else
