@@ -28,17 +28,16 @@ node('master') {
   if (isMaster) {
     stage 'Create S3 buckets if they don\'t already exist'
     sh """#!/bin/bash
-    for s3_bucket in ${projectName} ${wwwProjectName};
+    for __s3_bucket in ${projectName} ${wwwProjectName};
     do
-      aws s3api list-buckets --query \"Buckets[?Name==\\`\\"\$s3_bucket\\"\\`].Name\" --output text;
-      __result=\$?;
-      if [[ \$__result == 0 ]];
+      __result=\$(aws s3api list-buckets --query \"Buckets[?Name==\\`\\"\$__s3_bucket\\"\\`].Name\" --output text);
+      if [[ \$__result == \$__s3_bucket ]];
       then
-        echo \"\$s3_bucket S3 bucket found. Proceeding...\";
+        echo \"\$__s3_bucket S3 bucket found. Proceeding...\";
       else
-        echo \"\$s3_bucket S3 bucket not found. Creating...\";
-        aws s3 mb s3://\"\$s3_bucket\";
-        echo \"\$s3_bucket S3 bucket created successfully. Proceeding...\";
+        echo \"\$__s3_bucket S3 bucket not found. Creating...\";
+        aws s3 mb s3://\"\$__s3_bucket\";
+        echo \"\$__s3_bucket S3 bucket created successfully. Proceeding...\";
       fi;
     done;
     """
