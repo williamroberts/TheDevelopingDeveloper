@@ -56,20 +56,6 @@ node('master') {
     sh "aws s3api put-bucket-policy --bucket ${projectName} --policy file://aws-resources/${projectName}.policy.json"
 
 
-    stage "Create hosted zone for ${projectName} if it doesn't already exist"
-    sh """#!/bin/bash
-    __existing_hosted_zone=\$(aws route53 list-hosted-zones-by-name --dns-name ${projectName} --query HostedZones[0].Name --output text);
-    if [[ \$__existing_hosted_zone == ${projectName}. ]];
-    then
-      echo \"${projectName} hosted zone exists. Proceeding...\";
-    else
-      echo \"${projectName} hosted zone not found. Creating...\";
-      aws route53 create-hosted-zone --name ${projectName} --caller-reference \$(date +%Y%m%d_%H%M%S_%N);
-      echo \"${projectName} hosted zone created successfully. Proceeding...\";
-    fi;
-    """
-
-
     stage 'Assign Route53 domain to S3 bucket for easy browsing'
     sh "aws route53 change-resource-record-sets --hosted-zone-id \$(aws route53 list-hosted-zones-by-name --dns-name ${projectName} --query 'HostedZones[0].Id' --output text) --change-batch file://aws-resources/dns-record-set.json"
   } else {
