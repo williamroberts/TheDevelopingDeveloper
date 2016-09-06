@@ -1,0 +1,29 @@
+{
+  "Comment": "UPSERT record set for thedevelopingdeveloper.com",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "will-roberts.uk.",
+        "Type": "A",
+        "AliasTarget" : {
+          "HostedZoneId" : "Z1BKCTXD74EZPE",
+          "DNSName" : "s3-website-eu-west-1.amazonaws.com",
+          "EvaluateTargetHealth" : false
+        }
+      }
+    },
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "www.will-roberts.uk.",
+        "Type": "A",
+        "AliasTarget" : {
+          "HostedZoneId" : "Z1BKCTXD74EZPE",
+          "DNSName" : "s3-website-eu-west-1.amazonaws.com",
+          "EvaluateTargetHealth" : false
+        }
+      }
+    }
+  ]
+}
