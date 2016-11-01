@@ -1,33 +1,8 @@
-def checkExistenceOfS3Bucket(String bucketName) {
-  def bucketExists = sh (
-    script: "aws s3api list-buckets --query 'Buckets[?Name==`\"${bucketName}\"`].Name' --output text",
-    returnStdout: true
-    ).trim()
-  return bucketExists == bucketName
-}
+@Library('github.com/williamroberts/jenkins-shared-functions') _
 
-def createS3BucketsForDomainsIfTheyDontAlreadyExist(String domain) {
-  if (checkExistenceOfS3Bucket(domain)) {
-    println domain + " S3 bucket found. Proceeding..."
-  } else {
-    println domain + " S3 bucket not found. Creating..."
-    sh "aws s3 mb s3://\"${domain}\";"
-    println domain + " S3 bucket created successfully. Proceeding..."
-  }
+def configureS3BucketWebsiteConfig(String bucketName, String configFilePath) {
+  sh "aws s3api put-bucket-website --bucket ${bucketName} --website-configuration file://${configFilePath}"
 }
-
-def uploadDirToS3Bucket(String dirPath, String bucketName) {
-  sh "aws s3 sync \"${dirPath}\" s3://\"${bucketName}\"/"
-}
-
-def configureS3BucketWebsiteConfig(String s3Bucket, String configFilePath) {
-  sh "aws s3api put-bucket-website --bucket ${s3Bucket} --website-configuration file://${configFilePath}"
-}
-
-def configureS3BucketPolicy(String domain, String policyFilePath) {
-  sh "aws s3api put-bucket-policy --bucket ${domain} --policy file://${policyFilePath}"
-}
-
 
 node('master') {
   def awsRegion = env.AWS_REGION
@@ -58,17 +33,17 @@ node('master') {
   // Only deploy if this is the master branch. We don't want to deploy anything else (right now)
   if (isMaster) {
     stage("Create S3 buckets if they don't already exist") {
-      createS3BucketsForDomainsIfTheyDontAlreadyExist(hostDomain)
-      createS3BucketsForDomainsIfTheyDontAlreadyExist("www.${hostDomain}")
+      createS3BucketIfDoesntAlreadyExist(hostDomain)
+      createS3BucketIfDoesntAlreadyExist("www.${hostDomain}")
       for(int i = 0; i < redirectDomains.size(); i++) {
         def redirectDomain = redirectDomains[i]
-        createS3BucketsForDomainsIfTheyDontAlreadyExist(redirectDomain)
-        createS3BucketsForDomainsIfTheyDontAlreadyExist("www.${redirectDomain}")
+        createS3BucketIfDoesntAlreadyExist(redirectDomain)
+        createS3BucketIfDoesntAlreadyExist("www.${redirectDomain}")
       }
     }
 
     stage('Upload build to S3') {
-      uploadDirToS3Bucket(tmpFolder + distFolder, hostDomain)
+      syncDirToS3Bucket(tmpFolder + distFolder, hostDomain)
     }
 
     stage('Configure S3 buckets - naked domain as website, www as redirect') {
@@ -81,8 +56,8 @@ node('master') {
       }
     }
 
-    stage('Make S3 bucket browsable by all') {
-      configureS3BucketPolicy(hostDomain, "aws-resources/host-domain.bucket-policy.json")
+    stage('Make hosting S3 bucket browsable by all') {
+      setS3BucketPolicy(hostDomain, "aws-resources/host-domain.bucket-policy.json")
     }
 
     stage('Assign Route53 domain to S3 bucket for easy browsing') {
