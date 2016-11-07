@@ -1,7 +1,7 @@
 @Library('github.com/williamroberts/jenkins-shared-functions') _
 
-def configureS3BucketWebsiteConfig(String bucketName, String configFilePath) {
-  sh "aws s3api put-bucket-website --bucket ${bucketName} --website-configuration file://${configFilePath}"
+def configureS3BucketWebsiteConfig(String awsRegion, String bucketName, String configFilePath) {
+  sh "aws --region ${awsRegion} s3api put-bucket-website --bucket ${bucketName} --website-configuration file://${configFilePath}"
 }
 
 node('master') {
@@ -33,31 +33,31 @@ node('master') {
   // Only deploy if this is the master branch. We don't want to deploy anything else (right now)
   if (isMaster) {
     stage("Create S3 buckets if they don't already exist") {
-      createS3BucketIfDoesntAlreadyExist(hostDomain)
-      createS3BucketIfDoesntAlreadyExist("www.${hostDomain}")
+      createS3BucketIfDoesntAlreadyExist(awsRegion, hostDomain)
+      createS3BucketIfDoesntAlreadyExist(awsRegion, "www.${hostDomain}")
       for(int i = 0; i < redirectDomains.size(); i++) {
         def redirectDomain = redirectDomains[i]
-        createS3BucketIfDoesntAlreadyExist(redirectDomain)
-        createS3BucketIfDoesntAlreadyExist("www.${redirectDomain}")
+        createS3BucketIfDoesntAlreadyExist(awsRegion, redirectDomain)
+        createS3BucketIfDoesntAlreadyExist(awsRegion, "www.${redirectDomain}")
       }
     }
 
     stage('Upload build to S3') {
-      syncDirToS3Bucket(tmpFolder + distFolder, hostDomain)
+      syncDirToS3Bucket(awsRegion, tmpFolder + distFolder, hostDomain)
     }
 
     stage('Configure S3 buckets - naked domain as website, www as redirect') {
-      configureS3BucketWebsiteConfig(hostDomain, "aws-resources/host-domain.bucket-website-config.json")
-      configureS3BucketWebsiteConfig("www.${hostDomain}", "aws-resources/redirect-domain.bucket-website-config.json")
+      configureS3BucketWebsiteConfig(awsRegion, hostDomain, "aws-resources/host-domain.bucket-website-config.json")
+      configureS3BucketWebsiteConfig(awsRegion, "www.${hostDomain}", "aws-resources/redirect-domain.bucket-website-config.json")
       for(int i = 0; i < redirectDomains.size(); i++) {
         def redirectDomain = redirectDomains[i]
-        configureS3BucketWebsiteConfig(redirectDomain, "aws-resources/redirect-domain.bucket-website-config.json")
-        configureS3BucketWebsiteConfig("www.${redirectDomain}", "aws-resources/redirect-domain.bucket-website-config.json")
+        configureS3BucketWebsiteConfig(awsRegion, redirectDomain, "aws-resources/redirect-domain.bucket-website-config.json")
+        configureS3BucketWebsiteConfig(awsRegion, "www.${redirectDomain}", "aws-resources/redirect-domain.bucket-website-config.json")
       }
     }
 
     stage('Make hosting S3 bucket browsable by all') {
-      setS3BucketPolicy(hostDomain, "aws-resources/host-domain.bucket-policy.json")
+      setS3BucketPolicy(awsRegion, hostDomain, "aws-resources/host-domain.bucket-policy.json")
     }
 
     stage('Assign Route53 domain to S3 bucket for easy browsing') {
